@@ -16,6 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+
   title: {
     default: `${siteConfig.name} | ${siteConfig.title}`,
     template: `%s | ${siteConfig.name}`,
@@ -25,38 +27,51 @@ export const metadata: Metadata = {
 
   keywords: [
     "Koushik",
+    "Senior Frontend Engineer",
     "React",
     "Next.js",
     "TypeScript",
-    "Frontend Engineer",
-    "Software Engineer",
+    "Tailwind CSS",
     "Portfolio",
+    "Software Engineer",
   ],
-  metadataBase: new URL(siteConfig.url),
 
   authors: [{ name: "Koushik" }],
   creator: "Koushik",
 
-  openGraph: {
-    title: "Koushik Portfolio",
-    description:
-      "Senior Frontend Engineer specializing in React, Next.js, and TypeScript.",
-    url: "https://vkoushik.com",
-    siteName: "Koushik Portfolio",
-    locale: "en_US",
-    type: "website",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Koushik Portfolio",
-    description:
-      "Senior Frontend Engineer specializing in React, Next.js, and TypeScript.",
+  verification: {
+    google: "vNk7xQhsZwXAfyxhLGapu1mj6KhLR-l3UKEY0uoHwIw",
   },
 
   robots: {
     index: true,
     follow: true,
+  },
+
+  openGraph: {
+    title: "Koushik | Senior Frontend Engineer",
+    description:
+      "Senior Frontend Engineer specializing in React, Next.js, TypeScript and modern web applications.",
+    url: siteConfig.url,
+    siteName: "Koushik Portfolio",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Koushik Portfolio",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Koushik | Senior Frontend Engineer",
+    description:
+      "Senior Frontend Engineer specializing in React, Next.js and TypeScript.",
+    images: ["/og-image.png"],
   },
 };
 
