@@ -1,9 +1,11 @@
-import React from "react";
+"use client";
 
-export default function ThemeProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+import * as React from "react";
+import {
+  ThemeProvider as NextThemesProvider,
+  type ThemeProviderProps,
+} from "next-themes";
+
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
