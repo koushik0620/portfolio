@@ -42,20 +42,6 @@ export default function AboutContent() {
       <motion.div variants={fadeUp}>
         <AboutHighlights />
       </motion.div>
-
-      <motion.button
-        variants={fadeUp}
-        className="group mt-10 flex items-center gap-2 font-semibold text-primary"
-      >
-        View Experience
-        <ArrowRight
-          className="
-            transition-transform
-            duration-300
-            group-hover:translate-x-2
-          "
-        />
-      </motion.button>
     </motion.div>
   );
 }

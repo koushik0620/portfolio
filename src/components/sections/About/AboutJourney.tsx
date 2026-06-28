@@ -5,17 +5,17 @@ import AboutTimelineItem from "./AboutTimeline";
 
 const timeline = [
   {
-    year: "2021",
+    year: "2023",
     title: "Started Professional Career",
     description: "Began building production-grade React applications.",
   },
   {
-    year: "2022",
+    year: "2024",
     title: "Frontend Engineer",
     description: "Developed scalable dashboards and enterprise applications.",
   },
   {
-    year: "2024",
+    year: "2025",
     title: "Senior Frontend Engineer",
     description: "Led frontend development and built products from scratch.",
   },

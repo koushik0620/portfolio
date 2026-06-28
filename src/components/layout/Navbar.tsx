@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Menu } from "lucide-react";
 
 import Container from "./Container";
 import Logo from "@/components/common/Logo";
@@ -10,8 +10,18 @@ import ThemeToggle from "@/components/common/ThemeToggle";
 import PrimaryButton from "@/components/common/PrimaryButton";
 import { navigation } from "@/constants/navigation";
 
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -39,8 +49,10 @@ export default function Navbar() {
           `}
         >
           <div className="flex h-18 items-center justify-between">
+            {/* Logo */}
             <Logo />
 
+            {/* Desktop Navigation */}
             <nav className="hidden items-center gap-2 md:flex">
               {navigation.map((item) => (
                 <Link
@@ -63,6 +75,7 @@ export default function Navbar() {
               ))}
             </nav>
 
+            {/* Desktop Actions */}
             <div className="hidden items-center gap-3 md:flex">
               <ThemeToggle />
 
@@ -72,6 +85,64 @@ export default function Navbar() {
                   <ArrowUpRight className="ml-2 h-4 w-4" />
                 </Link>
               </PrimaryButton>
+            </div>
+
+            {/* Mobile Menu */}
+            <div className="md:hidden">
+              <Sheet open={open} onOpenChange={setOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+
+                <SheetContent
+                  side="right"
+                  className="w-full border-l border-border/40 bg-background/95 backdrop-blur-xl"
+                >
+                  <SheetHeader>
+                    <SheetTitle>
+                      <Logo />
+                    </SheetTitle>
+                  </SheetHeader>
+
+                  <div className="mt-12 flex flex-col gap-2">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="
+                          rounded-xl
+                          px-5
+                          py-4
+                          text-lg
+                          font-medium
+                          transition-all
+                          duration-300
+                          hover:bg-primary/10
+                          hover:text-primary
+                        "
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+
+                  <div className="mt-10 flex items-center justify-between rounded-xl border border-border p-4">
+                    <span className="text-sm font-medium">Theme</span>
+
+                    <ThemeToggle />
+                  </div>
+
+                  <PrimaryButton asChild className="mt-8 w-full">
+                    <Link href="/resume/resume.pdf" target="_blank">
+                      Download Resume
+                      <ArrowUpRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </PrimaryButton>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </div>

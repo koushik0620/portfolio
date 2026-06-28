@@ -31,7 +31,9 @@ export default function FooterCTA() {
         </Button>
 
         <Button variant="outline" size="lg">
-          Download Resume
+          <Link href="/resume/resume.pdf" target="_blank">
+            Download Resume
+          </Link>
         </Button>
       </div>
     </div>
