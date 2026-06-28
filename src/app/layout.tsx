@@ -40,9 +40,8 @@ export const metadata: Metadata = {
   creator: "Koushik",
 
   verification: {
-    google: "vNk7xQhsZwXAfyxhLGapu1mj6KhLR-l3UKEY0uoHwIw",
+    google: "6FaGTQZgyrSHGi-KxJVqC1qvJ4aQwKlek0X9uYKB9GA",
   },
-
   robots: {
     index: true,
     follow: true,
