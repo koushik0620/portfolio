@@ -1,40 +1,6 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
-
 export default function HeroStatusCard() {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={
-        prefersReducedMotion
-          ? {
-              opacity: 1,
-              y: 0,
-            }
-          : {
-              opacity: 1,
-              y: [0, 8, 0],
-            }
-      }
-      transition={
-        prefersReducedMotion
-          ? {
-              duration: 0.4,
-            }
-          : {
-              opacity: {
-                duration: 0.4,
-              },
-              y: {
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              },
-            }
-      }
+    <div
       className="
         rounded-2xl
         border
@@ -44,7 +10,6 @@ export default function HeroStatusCard() {
         shadow-xl
         backdrop-blur-sm
         md:backdrop-blur-xl
-        will-change-transform
       "
     >
       <div className="flex items-center gap-3">
@@ -63,6 +28,6 @@ export default function HeroStatusCard() {
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

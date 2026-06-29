@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Mail } from "lucide-react";
+import { ExternalLink, Link2, Mail } from "lucide-react";
 
 import { contact } from "@/data/contact";
 
@@ -18,7 +17,7 @@ export default function FooterSocials() {
           target="_blank"
           className="rounded-xl border p-3 transition hover:border-primary hover:bg-primary/10"
         >
-          <FaGithub size={18} />
+          <ExternalLink size={18} />
         </Link>
 
         <Link
@@ -26,7 +25,7 @@ export default function FooterSocials() {
           target="_blank"
           className="rounded-xl border p-3 transition hover:border-primary hover:bg-primary/10"
         >
-          <FaLinkedin size={18} />
+          <Link2 size={18} />
         </Link>
 
         <Link

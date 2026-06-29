@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { ExternalLink, Link2 } from "lucide-react";
 
 import { contact } from "@/data/contact";
 
@@ -26,7 +26,7 @@ export default function ContactSocials() {
           hover:bg-primary/10
         "
       >
-        <FaGithub size={20} />
+        <ExternalLink size={20} />
       </Link>
 
       <Link
@@ -46,7 +46,7 @@ export default function ContactSocials() {
           hover:bg-primary/10
         "
       >
-        <FaLinkedin size={20} />
+        <Link2 size={20} />
       </Link>
     </div>
   );

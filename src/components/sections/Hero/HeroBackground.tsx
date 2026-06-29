@@ -1,40 +1,8 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
-
 export default function HeroBackground() {
-  const prefersReducedMotion = useReducedMotion();
-
-  const createAnimation = (
-    duration: number,
-    x: number[],
-    y: number[],
-    scale: number[],
-  ) => {
-    if (prefersReducedMotion) {
-      return {};
-    }
-
-    return {
-      animate: {
-        x,
-        y,
-        scale,
-      },
-      transition: {
-        duration,
-        repeat: Infinity,
-        repeatType: "mirror" as const,
-        ease: "easeInOut" as const,
-      },
-    };
-  };
-
   return (
     <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
       {/* Left Glow */}
-      <motion.div
-        {...createAnimation(24, [-20, 20, -20], [-15, 15, -15], [1, 1.08, 1])}
+      <div
         className="
           absolute
           -left-24
@@ -52,8 +20,7 @@ export default function HeroBackground() {
       />
 
       {/* Center Glow */}
-      <motion.div
-        {...createAnimation(30, [0, 0, 0], [-20, 20, -20], [1, 1.1, 1])}
+      <div
         className="
           absolute
           left-1/2
@@ -73,8 +40,7 @@ export default function HeroBackground() {
       />
 
       {/* Right Glow */}
-      <motion.div
-        {...createAnimation(28, [20, -20, 20], [15, -15, 15], [1, 1.08, 1])}
+      <div
         className="
           absolute
           -right-20

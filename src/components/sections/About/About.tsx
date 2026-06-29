@@ -1,10 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
-import { fadeUp } from "@/lib/animations";
 
 import AboutContent from "./AboutContent";
 import AboutJourney from "./AboutJourney";
@@ -63,13 +58,7 @@ export default function About() {
 
       <Container>
         {/* Header */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          className="mx-auto mb-20 max-w-3xl text-center"
-        >
+        <div className="mx-auto mb-20 max-w-3xl text-center">
           <span className="inline-flex rounded-full border px-5 py-2 text-sm font-semibold text-primary">
             About Me
           </span>
@@ -83,27 +72,16 @@ export default function About() {
             focus on clean architecture, user experience, and modern frontend
             engineering.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid items-start gap-20 lg:grid-cols-[1.1fr_0.9fr]">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div className="max-w-full">
             <AboutContent />
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="sticky top-28"
-          >
+          <div className="sticky top-28">
             <AboutJourney />
-          </motion.div>
+          </div>
         </div>
       </Container>
     </Section>

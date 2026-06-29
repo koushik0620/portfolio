@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { ArrowUpRight, GitBranch } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Project } from "@/types/projects";
 
@@ -24,7 +23,7 @@ export default function ProjectActions({ project }: Props) {
 
       <Button asChild variant="outline" disabled={!project.github}>
         <Link href={project.github || "#"}>
-          <FaGithub className="h-4 w-4" />
+          <GitBranch className="h-4 w-4" />
         </Link>
       </Button>
     </div>

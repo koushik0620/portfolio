@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import { Circle } from "lucide-react";
 
 const lines = [
@@ -14,31 +11,8 @@ const lines = [
 ];
 
 export default function HeroTerminal() {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={
-        prefersReducedMotion
-          ? { opacity: 1, y: 0 }
-          : {
-              opacity: 1,
-              y: [0, -10, 0],
-            }
-      }
-      transition={
-        prefersReducedMotion
-          ? { duration: 0.5 }
-          : {
-              opacity: { duration: 0.5 },
-              y: {
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              },
-            }
-      }
+    <div
       className="
         w-[420px]
         overflow-hidden
@@ -47,7 +21,6 @@ export default function HeroTerminal() {
         border-zinc-800
         bg-zinc-950
         shadow-2xl
-        will-change-transform
       "
     >
       {/* Header */}
@@ -60,41 +33,13 @@ export default function HeroTerminal() {
       </div>
 
       {/* Terminal Body */}
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: 0.12,
-            },
-          },
-        }}
-        className="space-y-2 p-6 font-mono text-sm"
-      >
+      <div className="space-y-2 p-6 font-mono text-sm">
         {lines.map((line) => (
-          <motion.p
-            key={line}
-            variants={{
-              hidden: {
-                opacity: 0,
-                x: -12,
-              },
-              visible: {
-                opacity: 1,
-                x: 0,
-              },
-            }}
-            transition={{
-              duration: 0.3,
-            }}
-            className="text-green-400"
-          >
+          <p key={line} className="text-green-400">
             {line}
-          </motion.p>
+          </p>
         ))}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }

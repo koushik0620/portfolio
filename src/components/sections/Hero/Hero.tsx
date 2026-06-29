@@ -1,11 +1,5 @@
-"use client";
-
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
-
 import Container from "@/components/layout/Container";
 import { heroData } from "@/data/hero";
-import { fadeUp } from "@/lib/animations";
 
 import HeroBackground from "./HeroBackground";
 import HeroBadge from "./HeroBadge";
@@ -14,11 +8,7 @@ import HeroGrid from "./HeroGrid";
 import HeroScrollIndicator from "./HeroScrollIndicator";
 import HeroSocials from "./HeroSocials";
 import HeroStats from "./HeroStats";
-
-const HeroDashboard = dynamic(() => import("./HeroDashboard"), {
-  ssr: false,
-  loading: () => <div className="h-[520px] w-[420px]" />,
-});
+import HeroDashboardClient from "./HeroDashboardClient";
 
 export default function Hero() {
   return (
@@ -28,12 +18,7 @@ export default function Hero() {
 
       <Container>
         <div className="grid items-center gap-20 lg:grid-cols-[1.1fr_0.9fr]">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            className="max-w-3xl"
-          >
+          <div className="max-w-3xl">
             <HeroBadge />
 
             <p className="mt-8 text-lg font-semibold text-primary">
@@ -55,10 +40,10 @@ export default function Hero() {
             <HeroCTA />
             <HeroSocials />
             <HeroStats />
-          </motion.div>
+          </div>
 
           <div className="hidden justify-center lg:flex">
-            <HeroDashboard />
+            <HeroDashboardClient />
           </div>
         </div>
       </Container>
