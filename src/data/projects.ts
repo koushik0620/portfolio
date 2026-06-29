@@ -4,12 +4,12 @@ export const projects: Project[] = [
   {
     id: 1,
 
-    title: "AI Resume Builder",
+    title: "CareerCraft AI",
 
     description:
       "Generate ATS-friendly resumes using AI with customizable templates, smart suggestions, and export options.",
 
-    image: "/images/projects/placeholder.png",
+    image: "/images/projects/careerCraft.png",
 
     status: "In Progress",
 
@@ -17,7 +17,7 @@ export const projects: Project[] = [
 
     github: "",
 
-    live: "",
+    live: "https://careercraft.vkoushik.com/",
 
     caseStudy: "",
 
