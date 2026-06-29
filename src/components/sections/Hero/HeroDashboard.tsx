@@ -1,13 +1,23 @@
 "use client";
 
-import HeroTerminal from "./HeroTerminal";
-import HeroTechStack from "./HeroTechStack";
-import HeroStatusCard from "./HeroStatusCard";
-import HeroExperienceCard from "./HeroExperienceCard";
+import dynamic from "next/dynamic";
+
+const HeroTerminal = dynamic(() => import("./HeroTerminal"));
+const HeroTechStack = dynamic(() => import("./HeroTechStack"));
+const HeroStatusCard = dynamic(() => import("./HeroStatusCard"));
+const HeroExperienceCard = dynamic(() => import("./HeroExperienceCard"));
 
 export default function HeroDashboard() {
   return (
-    <div className="relative h-[620px] w-full max-w-[520px]">
+    <div
+      className="
+        relative
+        h-[620px]
+        w-full
+        max-w-[520px]
+        select-none
+      "
+    >
       {/* Status */}
       <div className="absolute left-0 top-0 z-30">
         <HeroStatusCard />
@@ -24,7 +34,7 @@ export default function HeroDashboard() {
       </div>
 
       {/* Tech Stack */}
-      <div className="absolute right-0 bottom-0 z-20">
+      <div className="absolute bottom-0 right-0 z-20">
         <HeroTechStack />
       </div>
     </div>

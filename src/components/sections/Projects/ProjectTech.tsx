@@ -1,5 +1,3 @@
-"use client";
-
 import { Badge } from "@/components/ui/badge";
 
 interface Props {
@@ -18,7 +16,7 @@ export default function ProjectTech({ technologies }: Props) {
             px-3
             py-1
             transition-all
-            hover:scale-105
+            hover:bg-primary/10
           "
         >
           {tech}

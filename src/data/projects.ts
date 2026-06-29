@@ -9,7 +9,7 @@ export const projects: Project[] = [
     description:
       "Generate ATS-friendly resumes using AI with customizable templates, smart suggestions, and export options.",
 
-    image: "/images/projects/careerCraft.png",
+    image: "/images/projects/careerCraft.jpg",
 
     status: "In Progress",
 
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     description:
       "A personal finance dashboard with analytics, budgeting, recurring expenses, and reports.",
 
-    image: "/images/projects/placeholder.png",
+    image: "/images/projects/placeholder.jpg",
 
     status: "Coming Soon",
 
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     description:
       "Practice coding interviews with AI-generated questions, feedback, and personalized learning paths.",
 
-    image: "/images/projects/placeholder.png",
+    image: "/images/projects/placeholder.jpg",
 
     status: "Coming Soon",
 

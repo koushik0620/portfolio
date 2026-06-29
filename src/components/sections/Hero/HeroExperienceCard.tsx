@@ -1,21 +1,57 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Briefcase } from "lucide-react";
 
 export default function HeroExperienceCard() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <motion.div
-      animate={{ y: [0, -12, 0] }}
-      transition={{
-        duration: 5,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-      className="rounded-2xl border bg-background/70 p-5 backdrop-blur-xl shadow-2xl"
+      initial={{ opacity: 0, y: 20 }}
+      animate={
+        prefersReducedMotion
+          ? {
+              opacity: 1,
+              y: 0,
+            }
+          : {
+              opacity: 1,
+              y: [0, -8, 0],
+            }
+      }
+      transition={
+        prefersReducedMotion
+          ? {
+              duration: 0.4,
+            }
+          : {
+              opacity: {
+                duration: 0.4,
+              },
+              y: {
+                duration: 9,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+            }
+      }
+      className="
+        rounded-2xl
+        border
+        border-border/60
+        bg-background/80
+        p-5
+        shadow-xl
+        backdrop-blur-sm
+        md:backdrop-blur-xl
+        will-change-transform
+      "
     >
       <div className="flex items-center gap-3">
-        <Briefcase className="text-primary" />
+        <div className="rounded-lg bg-primary/10 p-2">
+          <Briefcase className="h-5 w-5 text-primary" />
+        </div>
 
         <div>
           <p className="font-semibold">Experience</p>

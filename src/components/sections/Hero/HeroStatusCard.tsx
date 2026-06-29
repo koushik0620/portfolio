@@ -1,21 +1,59 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function HeroStatusCard() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <motion.div
-      animate={{
-        y: [0, 10, 0],
-      }}
-      transition={{
-        duration: 4,
-        repeat: Infinity,
-      }}
-      className="rounded-2xl border bg-background/70 p-5 backdrop-blur-xl shadow-xl"
+      initial={{ opacity: 0, y: 20 }}
+      animate={
+        prefersReducedMotion
+          ? {
+              opacity: 1,
+              y: 0,
+            }
+          : {
+              opacity: 1,
+              y: [0, 8, 0],
+            }
+      }
+      transition={
+        prefersReducedMotion
+          ? {
+              duration: 0.4,
+            }
+          : {
+              opacity: {
+                duration: 0.4,
+              },
+              y: {
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+            }
+      }
+      className="
+        rounded-2xl
+        border
+        border-border/60
+        bg-background/80
+        p-5
+        shadow-xl
+        backdrop-blur-sm
+        md:backdrop-blur-xl
+        will-change-transform
+      "
     >
       <div className="flex items-center gap-3">
-        <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse" />
+        {/* Status Dot */}
+        <div className="relative flex h-3 w-3 items-center justify-center">
+          <span className="absolute inline-flex h-3 w-3 rounded-full bg-green-500 opacity-75 animate-ping" />
+
+          <span className="relative h-3 w-3 rounded-full bg-green-500" />
+        </div>
 
         <div>
           <p className="font-semibold">Available for Work</p>

@@ -2,7 +2,6 @@
 
 import AboutTimelineItem from "./AboutTimeline";
 
-
 const timeline = [
   {
     year: "2023",
@@ -28,16 +27,28 @@ const timeline = [
 
 export default function AboutJourney() {
   return (
-    <div className="rounded-3xl border bg-background/50 p-10 backdrop-blur-xl shadow-xl">
+    <aside
+      className="
+        rounded-3xl
+        border
+        border-border/60
+        bg-background/70
+        p-8
+        shadow-lg
+        backdrop-blur-sm
+        md:p-10
+        md:backdrop-blur-xl
+      "
+    >
       <h3 className="mb-10 text-3xl font-bold">My Journey</h3>
 
       {timeline.map((item, index) => (
         <AboutTimelineItem
-          key={item.title}
+          key={item.year}
           {...item}
           last={index === timeline.length - 1}
         />
       ))}
-    </div>
+    </aside>
   );
 }

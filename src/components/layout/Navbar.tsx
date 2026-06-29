@@ -24,29 +24,42 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const onScroll = () => {
-      setScrolled(window.scrollY > 30);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isScrolled = window.scrollY > 30;
+
+          setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+
+          ticking = false;
+        });
+
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", onScroll);
+    onScroll();
 
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <Container>
         <div
-          className={`
-            mt-5
-            transition-all
-            duration-500
-            ${
-              scrolled
-                ? "mx-auto max-w-6xl rounded-full border border-border/50 bg-background/70 px-6 shadow-2xl backdrop-blur-2xl"
-                : ""
-            }
-          `}
+          className={`mt-5 transition-[background,border,box-shadow] duration-300 ${
+            scrolled
+              ? "mx-auto max-w-6xl rounded-full border border-border/50 bg-background/80 px-6 shadow-lg backdrop-blur-md md:backdrop-blur-xl"
+              : ""
+          }`}
         >
           <div className="flex h-18 items-center justify-between">
             {/* Logo */}
@@ -64,8 +77,8 @@ export default function Navbar() {
                     py-2
                     text-sm
                     font-medium
-                    transition-all
-                    duration-300
+                    transition-colors
+                    duration-200
                     hover:bg-primary/10
                     hover:text-primary
                   "
@@ -80,25 +93,34 @@ export default function Navbar() {
               <ThemeToggle />
 
               <PrimaryButton asChild>
-                <Link href="/resume/resume.pdf" target="_blank">
+                <Link
+                  href="/resume/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Resume
                   <ArrowUpRight className="ml-2 h-4 w-4" />
                 </Link>
               </PrimaryButton>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile */}
             <div className="md:hidden">
               <Sheet open={open} onOpenChange={setOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="rounded-full">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full"
+                    aria-label="Open menu"
+                  >
                     <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
 
                 <SheetContent
                   side="right"
-                  className="w-full border-l border-border/40 bg-background/95 backdrop-blur-xl"
+                  className="w-full border-l border-border/40 bg-background/95 backdrop-blur-md"
                 >
                   <SheetHeader>
                     <SheetTitle>
@@ -118,8 +140,8 @@ export default function Navbar() {
                           py-4
                           text-lg
                           font-medium
-                          transition-all
-                          duration-300
+                          transition-colors
+                          duration-200
                           hover:bg-primary/10
                           hover:text-primary
                         "
@@ -136,7 +158,11 @@ export default function Navbar() {
                   </div>
 
                   <PrimaryButton asChild className="mt-8 w-full">
-                    <Link href="/resume/resume.pdf" target="_blank">
+                    <Link
+                      href="/resume/resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Download Resume
                       <ArrowUpRight className="ml-2 h-4 w-4" />
                     </Link>

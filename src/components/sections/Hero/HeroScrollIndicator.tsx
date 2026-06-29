@@ -1,42 +1,46 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, Mouse } from "lucide-react";
 
 export default function HeroScrollIndicator() {
+  const reducedMotion = useReducedMotion();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-      }}
-      transition={{
-        delay: 1.2,
-      }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.8 }}
       className="
         absolute
-        bottom-10
+        bottom-8
         left-1/2
-        flex
+        hidden
         -translate-x-1/2
         flex-col
         items-center
         gap-2
         text-muted-foreground
+        lg:flex
       "
     >
       <Mouse className="h-6 w-6" />
 
       <motion.div
-        animate={{
-          y: [0, 8, 0],
-        }}
+        animate={
+          reducedMotion
+            ? {}
+            : {
+                y: [0, 6, 0],
+              }
+        }
         transition={{
-          duration: 1.6,
+          duration: 2.5,
           repeat: Infinity,
+          ease: "easeInOut",
         }}
       >
-        <ChevronDown />
+        <ChevronDown className="h-5 w-5" />
       </motion.div>
     </motion.div>
   );

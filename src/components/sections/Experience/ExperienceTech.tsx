@@ -7,42 +7,22 @@ export default function ExperienceTech({ tech }: { tech: string[] }) {
     <div className="mt-10">
       <h4 className="mb-5 text-lg font-semibold">Technologies</h4>
 
-      <div className="flex flex-wrap gap-3">
-        {tech.map((item, index) => (
-          <motion.div
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
+        className="flex flex-wrap gap-3"
+      >
+        {tech.map((item) => (
+          <span
             key={item}
-            initial={{
-              opacity: 0,
-              scale: 0.8,
-            }}
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              delay: index * 0.05,
-            }}
-            whileHover={{
-              scale: 1.08,
-            }}
-            className="
-              rounded-full
-              border
-              border-white/10
-              bg-white/5
-              px-4
-              py-2
-              text-sm
-              transition-all
-              hover:border-indigo-400/50
-              hover:bg-indigo-500/10
-            "
+            className="rounded-full border border-border/50 bg-background/40 px-4 py-2 text-sm transition-transform duration-200 hover:scale-105 hover:bg-primary/5"
           >
             {item}
-          </motion.div>
+          </span>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

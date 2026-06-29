@@ -1,4 +1,3 @@
-"use client";
 
 import { Badge } from "@/components/ui/badge";
 import { Clock3, CheckCircle2, Hammer } from "lucide-react";

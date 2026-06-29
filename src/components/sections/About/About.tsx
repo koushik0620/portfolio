@@ -11,34 +11,64 @@ import AboutJourney from "./AboutJourney";
 
 export default function About() {
   return (
-    <Section id="about" className="relative overflow-hidden py-28 lg:py-36">
-      {/* Background Glow */}
-      <div className="absolute inset-0 -z-20">
-        <div className="absolute left-0 top-24 h-80 w-80 rounded-full bg-primary/10 blur-[140px]" />
+    <Section id="about" className="relative overflow-hidden py-24 lg:py-32">
+      {/* Background */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20">
+        <div
+          className="
+            absolute
+            left-0
+            top-24
+            h-72
+            w-72
+            rounded-full
+            bg-primary/10
+            blur-[90px]
+            md:h-80
+            md:w-80
+            md:blur-[120px]
+          "
+        />
 
-        <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-violet-500/10 blur-[180px]" />
+        <div
+          className="
+            absolute
+            right-0
+            bottom-0
+            h-80
+            w-80
+            rounded-full
+            bg-violet-500/10
+            blur-[100px]
+            md:h-96
+            md:w-96
+            md:blur-[140px]
+          "
+        />
       </div>
 
-      {/* Grid Pattern */}
+      {/* Grid */}
       <div
+        aria-hidden
         className="
+          pointer-events-none
           absolute
           inset-0
           -z-10
-          opacity-[0.04]
+          opacity-[0.035]
           [background-image:linear-gradient(to_right,#8881_1px,transparent_1px),linear-gradient(to_bottom,#8881_1px,transparent_1px)]
           [background-size:60px_60px]
         "
       />
 
       <Container>
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="mx-auto mb-24 max-w-3xl text-center"
+          viewport={{ once: true, amount: 0.25 }}
+          className="mx-auto mb-20 max-w-3xl text-center"
         >
           <span className="inline-flex rounded-full border px-5 py-2 text-sm font-semibold text-primary">
             About Me
@@ -55,25 +85,21 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* Main Layout */}
-        <div className="grid items-start gap-24 lg:grid-cols-[1.1fr_0.9fr]">
-          {/* Left */}
+        <div className="grid items-start gap-20 lg:grid-cols-[1.1fr_0.9fr]">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <AboutContent />
           </motion.div>
 
-          {/* Right */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            viewport={{ once: true, amount: 0.2 }}
             className="sticky top-28"
           >
             <AboutJourney />

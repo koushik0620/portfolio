@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 import { aboutData } from "@/data/about";
 import { fadeUp, staggerContainer } from "@/lib/animations";
@@ -14,10 +13,9 @@ export default function AboutContent() {
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
       className="max-w-2xl"
     >
-
       <motion.h2
         variants={fadeUp}
         className="mt-6 text-5xl font-black leading-tight tracking-tight"

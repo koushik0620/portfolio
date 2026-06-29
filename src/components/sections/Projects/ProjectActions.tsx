@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
@@ -14,7 +12,11 @@ export default function ProjectActions({ project }: Props) {
   return (
     <div className="flex gap-3 pt-2">
       <Button asChild disabled={!project.live} className="flex-1">
-        <Link href={project.live || "#"}>
+        <Link
+          href={project.live || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Live Demo
           <ArrowUpRight className="ml-2 h-4 w-4" />
         </Link>
