@@ -2,15 +2,24 @@
 
 import dynamic from "next/dynamic";
 
+import LazySection from "./LazySection";
+import {
+  AboutSectionSkeleton,
+  ContactSectionSkeleton,
+  ExperienceSectionSkeleton,
+  ProjectsSectionSkeleton,
+  SkillsSectionSkeleton,
+} from "./SectionSkeletons";
+
 const About = dynamic(() => import("@/components/sections/About"), {
-  loading: () => <div className="h-[600px]" />,
+  loading: () => <AboutSectionSkeleton />,
   ssr: false,
 });
 
 const Experience = dynamic(
   () => import("@/components/sections/Experience/Experience"),
   {
-    loading: () => <div className="h-[800px]" />,
+    loading: () => <ExperienceSectionSkeleton />,
     ssr: false,
   },
 );
@@ -18,29 +27,43 @@ const Experience = dynamic(
 const Projects = dynamic(
   () => import("@/components/sections/Projects/Projects"),
   {
-    loading: () => <div className="h-[800px]" />,
+    loading: () => <ProjectsSectionSkeleton />,
     ssr: false,
   },
 );
 
 const Skills = dynamic(() => import("@/components/sections/Skills/Skills"), {
-  loading: () => <div className="h-[600px]" />,
+  loading: () => <SkillsSectionSkeleton />,
   ssr: false,
 });
 
 const Contact = dynamic(() => import("@/components/sections/Contact/Contact"), {
-  loading: () => <div className="h-[600px]" />,
+  loading: () => <ContactSectionSkeleton />,
   ssr: false,
 });
 
 export default function PageSections() {
   return (
     <>
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Contact />
+      <LazySection skeleton={<AboutSectionSkeleton />}>
+        <About />
+      </LazySection>
+
+      <LazySection skeleton={<ExperienceSectionSkeleton />}>
+        <Experience />
+      </LazySection>
+
+      <LazySection skeleton={<ProjectsSectionSkeleton />}>
+        <Projects />
+      </LazySection>
+
+      <LazySection skeleton={<SkillsSectionSkeleton />}>
+        <Skills />
+      </LazySection>
+
+      <LazySection skeleton={<ContactSectionSkeleton />}>
+        <Contact />
+      </LazySection>
     </>
   );
 }
